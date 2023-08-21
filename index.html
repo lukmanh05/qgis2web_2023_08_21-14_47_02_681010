@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1316px;
+            height: 891px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/1601regsosekcleanCopy1601regsosekclean_1.js"></script>
+        <script src="data/final_desa_202011601_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-3.9676956460461668,104.30612944227553],[-3.9114743906944796,104.38922812566375]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_GoogleSatelliteHybrid_0');
+        map.getPane('pane_GoogleSatelliteHybrid_0').style.zIndex = 400;
+        var layer_GoogleSatelliteHybrid_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatelliteHybrid_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_GoogleSatelliteHybrid_0;
+        map.addLayer(layer_GoogleSatelliteHybrid_0);
+        function pop_1601regsosekcleanCopy1601regsosekclean_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Kabupaten</th>\
+                        <td>' + (feature.properties['nmkab'] !== null ? autolinker.link(feature.properties['nmkab'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Kecamatan</th>\
+                        <td>' + (feature.properties['nmkec'] !== null ? autolinker.link(feature.properties['nmkec'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Wilayah</th>\
+                        <td>' + (feature.properties['nmsls'] !== null ? autolinker.link(feature.properties['nmsls'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Desa</th>\
+                        <td>' + (feature.properties['nmdesa'] !== null ? autolinker.link(feature.properties['nmdesa'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Provinsi</th>\
+                        <td>' + (feature.properties['nmprov'] !== null ? autolinker.link(feature.properties['nmprov'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Sumber Peta</th>\
+                        <td>' + (feature.properties['sumber'] !== null ? autolinker.link(feature.properties['sumber'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Luas Wilayah</th>\
+                        <td>' + (feature.properties['luas'] !== null ? autolinker.link(feature.properties['luas'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_1601regsosekcleanCopy1601regsosekclean_1_0() {
+            return {
+                pane: 'pane_1601regsosekcleanCopy1601regsosekclean_1',
+                opacity: 1,
+                color: 'rgba(53,121,177,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_1601regsosekcleanCopy1601regsosekclean_1');
+        map.getPane('pane_1601regsosekcleanCopy1601regsosekclean_1').style.zIndex = 401;
+        map.getPane('pane_1601regsosekcleanCopy1601regsosekclean_1').style['mix-blend-mode'] = 'normal';
+        var layer_1601regsosekcleanCopy1601regsosekclean_1 = new L.geoJson(json_1601regsosekcleanCopy1601regsosekclean_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_1601regsosekcleanCopy1601regsosekclean_1',
+            layerName: 'layer_1601regsosekcleanCopy1601regsosekclean_1',
+            pane: 'pane_1601regsosekcleanCopy1601regsosekclean_1',
+            onEachFeature: pop_1601regsosekcleanCopy1601regsosekclean_1,
+            style: style_1601regsosekcleanCopy1601regsosekclean_1_0,
+        });
+        bounds_group.addLayer(layer_1601regsosekcleanCopy1601regsosekclean_1);
+        map.addLayer(layer_1601regsosekcleanCopy1601regsosekclean_1);
+        function pop_final_desa_202011601_2(feature, layer) {
+        }
+
+        function style_final_desa_202011601_2_0() {
+            return {
+                pane: 'pane_final_desa_202011601_2',
+                opacity: 1,
+                color: 'rgba(228,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_final_desa_202011601_2');
+        map.getPane('pane_final_desa_202011601_2').style.zIndex = 402;
+        map.getPane('pane_final_desa_202011601_2').style['mix-blend-mode'] = 'normal';
+        var layer_final_desa_202011601_2 = new L.geoJson(json_final_desa_202011601_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_final_desa_202011601_2',
+            layerName: 'layer_final_desa_202011601_2',
+            pane: 'pane_final_desa_202011601_2',
+            onEachFeature: pop_final_desa_202011601_2,
+            style: style_final_desa_202011601_2_0,
+        });
+        bounds_group.addLayer(layer_final_desa_202011601_2);
+        map.addLayer(layer_final_desa_202011601_2);
+        setBounds();
+        var i = 0;
+        layer_1601regsosekcleanCopy1601regsosekclean_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['nmsls'] !== null?String('<div style="color: #ff7f00; font-size: 10pt; font-weight: bold; font-family: \'Myriad Pro\', sans-serif;">' + layer.feature.properties['nmsls']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_1601regsosekcleanCopy1601regsosekclean_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_1601regsosekcleanCopy1601regsosekclean_1,layer_final_desa_202011601_2]);
+        map.on("zoomend", function(){
+            resetLabels([layer_1601regsosekcleanCopy1601regsosekclean_1,layer_final_desa_202011601_2]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_1601regsosekcleanCopy1601regsosekclean_1,layer_final_desa_202011601_2]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_1601regsosekcleanCopy1601regsosekclean_1,layer_final_desa_202011601_2]);
+        });
+        </script>
+    </body>
+</html>
